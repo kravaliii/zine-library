@@ -21,10 +21,6 @@ function renderPages(view, reader) {
     right.alt = '';
   }
 
-  const status = view.querySelector('.page-status');
-  if (status) status.textContent = page === 0
-    ? `1 / ${total}`
-    : facing ? `${page}–${facing} / ${total}` : `${page} / ${total}`;
   view.classList.toggle('has-spread', Boolean(facing));
   view.querySelector('.prev-page').disabled = position === 0;
   view.querySelector('.next-page').disabled = position === turns.length - 1;

@@ -62,7 +62,6 @@ body {
   font-size: 17px;
   font-weight: 400;
 }
-.page-status { color: var(--moss); font-size: 15px; }
 
 .radio { display: flex; align-items: center; gap: 7px; min-width: 0; }
 .radio-label { margin-right: 4px; font-size: 14px; color: var(--moss); white-space: nowrap; }
