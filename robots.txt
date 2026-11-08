@@ -1,0 +1,38 @@
+# Crawler opt-out for the zine library.
+# On GitHub Pages this file must also be served at
+# https://kravaliii.github.io/robots.txt to be consulted by crawlers.
+User-agent: *
+Disallow: /zine-library/
+
+User-agent: GPTBot
+Disallow: /zine-library/
+
+User-agent: OAI-SearchBot
+Disallow: /zine-library/
+
+User-agent: ChatGPT-User
+Disallow: /zine-library/
+
+User-agent: ClaudeBot
+Disallow: /zine-library/
+
+User-agent: Claude-User
+Disallow: /zine-library/
+
+User-agent: CCBot
+Disallow: /zine-library/
+
+User-agent: Google-Extended
+Disallow: /zine-library/
+
+User-agent: PerplexityBot
+Disallow: /zine-library/
+
+User-agent: Bytespider
+Disallow: /zine-library/
+
+User-agent: Amazonbot
+Disallow: /zine-library/
+
+User-agent: Applebot-Extended
+Disallow: /zine-library/

@@ -21,3 +21,9 @@ git push origin main
 ```
 
 Each push to `main` automatically runs `.github/workflows/deploy-pages.yml`. Follow progress in the repository's **Actions** tab. If Git asks for an author identity, set your `user.name` and `user.email` with `git config` first.
+
+## Crawler opt-out
+
+`index.html` asks search engines not to index or follow the site. `robots.txt` asks crawlers, including named AI crawlers, not to visit `/zine-library/`.
+
+**Important:** This repository is a GitHub Pages *project site*. Its file is published at `/zine-library/robots.txt`, but crawlers only consult `https://kravaliii.github.io/robots.txt`. For the robots rules to be discoverable, publish a copy at the root of a separate `kravaliii.github.io` user-site repository (or use a custom domain with a root-level `robots.txt`). A `robots.txt` is voluntary; it cannot stop bots that ignore it. To actually restrict access, take the site and files offline or use hosting with authentication, and consider making the repository private.
