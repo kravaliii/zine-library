@@ -403,7 +403,7 @@ html.swipe-to-about .about-card, html.swipe-to-library .about-card { animation: 
   html::view-transition-old(root), html::view-transition-new(root) { animation: none !important; }
 }
 
-/* Pink star cursor and a short glitter trail. */
+/* Pink star cursor with lingering glitter. */
 .has-pink-cursor, .has-pink-cursor button, .has-pink-cursor a,
 .has-pink-cursor .zine .zine-pages img { cursor: none !important; }
 .pink-star-cursor {
@@ -428,9 +428,10 @@ html.swipe-to-about .about-card, html.swipe-to-library .about-card { animation: 
   background: var(--ash);
   box-shadow: 0 0 9px var(--plum);
   clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
-  animation: glitter-out .85s ease-out forwards;
+  animation: glitter-out 1.8s ease-out forwards;
 }
 @keyframes glitter-out {
+  35% { opacity: 1; }
   to { opacity: 0; transform: translate(var(--drift), 22px) scale(.2) rotate(90deg); }
 }
 
