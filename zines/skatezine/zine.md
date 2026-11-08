@@ -1,3 +1,3 @@
 # skatzine
 
-skate-tricks als collage.
+skater / pro skater
