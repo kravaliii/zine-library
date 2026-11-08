@@ -30,6 +30,9 @@ body {
 [hidden] { display: none !important; }
 
 .archive {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 32px);
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -211,6 +214,11 @@ body {
   color: var(--ash);
   box-shadow: 2px 2px 0 var(--plum);
 }
+
+.site-footer { margin: auto 0 28px; padding-top: 48px; text-align: center; }
+.site-footer a { color: var(--plum); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.site-footer a:hover { color: var(--moss); }
+.site-footer a:focus-visible { outline: 2px dashed var(--moss); outline-offset: 4px; }
 
 .zine .zine-pages img { cursor: pointer; }
 .zine .zine-pages img:focus-visible { outline: 2px dashed var(--moss); outline-offset: 4px; }
