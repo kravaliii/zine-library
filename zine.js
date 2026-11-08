@@ -47,9 +47,9 @@ function closeReader() {
   }
 }
 
-function openReader(reader) {
+function openReader(reader, image) {
   activeReader = reader;
-  opener = reader.zine.querySelector('.zine-pages');
+  opener = image;
   dialog.setAttribute('aria-label', `${reader.title} reader (press Escape or click outside to close)`);
   renderPages(dialog, reader);
   if (typeof dialog.showModal === 'function') {
@@ -76,28 +76,21 @@ document.querySelectorAll('.zine').forEach((zine) => {
   if (total > 1 && total % 2 === 0) turns.push(total);
   const reader = { zine, title, cover, folder, total, turns, position: 0 };
 
-  zine.querySelector('.prev-page').addEventListener('click', () => {
-    turnPage(reader, -1);
-    openReader(reader);
-  });
-  zine.querySelector('.next-page').addEventListener('click', () => {
-    turnPage(reader, 1);
-    openReader(reader);
-  });
+  zine.querySelector('.prev-page').addEventListener('click', () => turnPage(reader, -1));
+  zine.querySelector('.next-page').addEventListener('click', () => turnPage(reader, 1));
 
-  // The card and page arrows open the reader; the PDF link opens separately.
-  zine.addEventListener('click', (event) => {
-    if (!event.target.closest('.zine-controls')) openReader(reader);
-  });
-  const coverArea = zine.querySelector('.zine-pages');
-  coverArea.tabIndex = 0;
-  coverArea.setAttribute('role', 'button');
-  coverArea.setAttribute('aria-label', `Open ${title} in the large reader`);
-  coverArea.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      openReader(reader);
-    }
+  // Only clicking a page image opens the large reader; card controls stay inline.
+  zine.querySelectorAll('.zine-pages img').forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', `Open ${title} in the large reader`);
+    image.addEventListener('click', () => openReader(reader, image));
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openReader(reader, image);
+      }
+    });
   });
   renderPages(zine, reader);
 });

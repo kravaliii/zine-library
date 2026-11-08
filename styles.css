@@ -212,8 +212,8 @@ body {
   box-shadow: 2px 2px 0 var(--plum);
 }
 
-.zine .zine-pages, .zine .zine-details { cursor: pointer; }
-.zine .zine-pages:focus-visible { outline: 2px dashed var(--moss); outline-offset: 4px; }
+.zine .zine-pages img { cursor: pointer; }
+.zine .zine-pages img:focus-visible { outline: 2px dashed var(--moss); outline-offset: 4px; }
 body.dialog-open { overflow: hidden; }
 body.fallback-reader-open::before {
   content: '';
@@ -297,7 +297,7 @@ body.fallback-reader-open::before {
 
 /* Pink star cursor and a short glitter trail. */
 .has-pink-cursor, .has-pink-cursor button, .has-pink-cursor a,
-.has-pink-cursor .zine .zine-pages, .has-pink-cursor .zine .zine-details { cursor: none !important; }
+.has-pink-cursor .zine .zine-pages img { cursor: none !important; }
 .pink-star-cursor {
   position: fixed;
   top: 0;
