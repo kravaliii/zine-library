@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>Kravali — Zines</title>
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
   <script src="zine.js?v=4" defer></script>
-  <script src="cursor.js?v=2" defer></script>
+  <script src="cursor.js?v=3" defer></script>
+  <script src="about.js" defer></script>
   <script src="cat.js" defer></script>
   <script src="radio.js" defer></script>
 </head>
@@ -129,6 +130,7 @@
     </section>
 
     <footer class="site-footer">
+      <button class="about-trigger" type="button">who made this</button>
       <a href="https://zs.wistoff.de/" target="_blank" rel="noopener noreferrer">click here to make your own zine</a>
       <a href="https://www.youtube.com/watch?v=MKM3PfFhsbQ" target="_blank" rel="noopener noreferrer">click here to find out how to fold a zine</a>
     </footer>
@@ -143,6 +145,15 @@
           <button class="prev-page" type="button" aria-label="Previous pages">←</button>
           <button class="next-page" type="button" aria-label="Next pages">→</button>
         </div>
+      </div>
+    </dialog>
+
+    <dialog class="about-dialog" aria-label="Who made this">
+      <button class="about-close" type="button" aria-label="Close about me">×</button>
+      <div class="about-content">
+        <!-- Replace with <img class="about-photo" src="..." alt="..."> when you have a picture. -->
+        <div class="about-photo" role="img" aria-label="Picture placeholder">picture here</div>
+        <p class="about-copy">about me</p>
       </div>
     </dialog>
   </main>

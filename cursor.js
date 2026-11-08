@@ -6,15 +6,23 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
   star.setAttribute('aria-hidden', 'true');
   document.body.appendChild(star);
 
-  // A native dialog sits above the page: keep the glitter cursor in its top layer.
-  const readerDialog = document.querySelector('.zine-dialog');
-  if (readerDialog) {
-    const placeCursor = () => {
-      (readerDialog.hasAttribute('open') ? readerDialog : document.body).appendChild(star);
-      if (!readerDialog.hasAttribute('open')) readerDialog.querySelectorAll('.pink-glitter').forEach((sparkle) => sparkle.remove());
-    };
-    new MutationObserver(placeCursor).observe(readerDialog, { attributes: true, attributeFilter: ['open'] });
+  // Keep the star in the top layer of whichever popup is open.
+  const dialogs = [...document.querySelectorAll('dialog')];
+  function cursorLayer() {
+    for (let i = dialogs.length - 1; i >= 0; i--) {
+      if (dialogs[i].hasAttribute('open')) return dialogs[i];
+    }
+    return document.body;
   }
+  function placeCursor() {
+    cursorLayer().appendChild(star);
+    dialogs.filter((dialog) => !dialog.hasAttribute('open')).forEach((dialog) => {
+      dialog.querySelectorAll('.pink-glitter').forEach((sparkle) => sparkle.remove());
+    });
+  }
+  dialogs.forEach((dialog) => {
+    new MutationObserver(placeCursor).observe(dialog, { attributes: true, attributeFilter: ['open'] });
+  });
 
   let lastSparkle = 0;
 
@@ -34,7 +42,7 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
       glitter.style.top = `${event.clientY + (Math.random() - .5) * 38}px`;
       glitter.style.width = glitter.style.height = `${4 + Math.random() * 8}px`;
       glitter.style.setProperty('--drift', `${(Math.random() - .5) * 36}px`);
-      (readerDialog?.hasAttribute('open') ? readerDialog : document.body).appendChild(glitter);
+      cursorLayer().appendChild(glitter);
       glitter.addEventListener('animationend', () => glitter.remove(), { once: true });
     }
   });

@@ -224,9 +224,18 @@ body {
   padding-top: 48px;
   text-align: center;
 }
-.site-footer a { color: var(--plum); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
-.site-footer a:hover { color: var(--moss); }
-.site-footer a:focus-visible { outline: 2px dashed var(--moss); outline-offset: 4px; }
+.site-footer .about-trigger { padding: 0; border: 0; background: none; font: inherit; cursor: pointer; }
+.site-footer a, .site-footer .about-trigger {
+  color: var(--plum);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-footer a:hover, .site-footer .about-trigger:hover { color: var(--moss); }
+.site-footer a:focus-visible, .site-footer .about-trigger:focus-visible {
+  outline: 2px dashed var(--moss);
+  outline-offset: 4px;
+}
 
 .zine .zine-pages img { cursor: pointer; }
 .zine .zine-pages img:focus-visible { outline: 2px dashed var(--moss); outline-offset: 4px; }
@@ -309,6 +318,55 @@ body.fallback-reader-open::before {
     gap: 16px;
     pointer-events: auto;
   }
+}
+
+.about-dialog {
+  box-sizing: border-box;
+  width: min(570px, calc(100vw - 36px));
+  max-width: none;
+  padding: 26px;
+  border: 10px solid var(--sage);
+  background: var(--ash);
+  color: var(--plum);
+  box-shadow: 7px 8px 0 rgba(48, 1, 30, .35);
+}
+.about-dialog::backdrop { background: rgba(48, 1, 30, .75); backdrop-filter: blur(3px); }
+.about-dialog.fallback-dialog { position: fixed; inset: 0; z-index: 100; margin: auto; height: fit-content; }
+body.fallback-about-open::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(48, 1, 30, .75);
+}
+.about-close {
+  position: absolute;
+  top: 4px;
+  right: 9px;
+  border: 0;
+  background: none;
+  color: var(--plum);
+  font: bold 28px/1 Arial, sans-serif;
+  cursor: pointer;
+}
+.about-close:focus-visible { outline: 2px dashed var(--moss); outline-offset: 3px; }
+.about-content { display: grid; grid-template-columns: 190px minmax(0, 1fr); align-items: center; gap: 22px; }
+.about-photo {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 190px;
+  height: 190px;
+  border: 2px dashed var(--moss);
+  background: var(--blush);
+  color: var(--plum);
+  font-size: 14px;
+  object-fit: cover;
+}
+.about-copy { margin: 0; font-size: 18px; }
+@media (max-width: 520px) {
+  .about-content { grid-template-columns: 1fr; justify-items: center; gap: 16px; }
+  .about-copy { text-align: center; }
 }
 
 /* Pink star cursor and a short glitter trail. */
