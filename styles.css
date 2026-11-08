@@ -271,7 +271,8 @@ body.fallback-reader-open::before {
 }
 
 /* Pink star cursor and a short glitter trail. */
-.has-pink-cursor, .has-pink-cursor button, .has-pink-cursor a { cursor: none !important; }
+.has-pink-cursor, .has-pink-cursor button, .has-pink-cursor a,
+.has-pink-cursor .zine .zine-pages, .has-pink-cursor .zine .zine-details { cursor: none !important; }
 .pink-star-cursor {
   position: fixed;
   top: 0;
