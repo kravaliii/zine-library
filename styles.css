@@ -339,17 +339,18 @@ body.fallback-reader-open::before {
 .zine-dialog .zine-pages img { min-width: 0; max-height: min(72dvh, 650px); }
 .zine-dialog .zine-controls {
   position: absolute;
-  inset: 0 4px;
+  inset: 0 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   pointer-events: none;
 }
 .zine-dialog .zine-controls button {
-  width: 38px;
+  width: 32px;
   height: 48px;
   padding: 0;
-  font-size: 36px;
+  font-size: 30px;
+  text-shadow: 1px 0 0 currentColor, -1px 0 0 currentColor, 0 1px 0 currentColor, 0 -1px 0 currentColor;
   pointer-events: auto;
 }
 
@@ -357,8 +358,8 @@ body.fallback-reader-open::before {
   .zine-dialog { width: calc(100vw - 24px); padding: 8px; }
   .zine-dialog:not(.has-spread) { width: calc((100vw - 24px) / 2 + 46px); }
   .dialog-inner { padding: 14px 38px; }
-  .zine-dialog .zine-controls { inset: 0 2px; }
-  .zine-dialog .zine-controls button { width: 32px; height: 44px; font-size: 30px; }
+  .zine-dialog .zine-controls { inset: 0 11px; }
+  .zine-dialog .zine-controls button { width: 32px; height: 44px; font-size: 22px; }
 }
 
 .about-card {
