@@ -325,8 +325,13 @@ body.fallback-reader-open::before {
   width: min(570px, calc(100vw - 36px));
   max-width: none;
   padding: 26px;
-  border: 10px solid var(--sage);
-  background: var(--ash);
+  border: 10px solid var(--plum);
+  background:
+    radial-gradient(circle at 11px 0, var(--plum) 0 11px, transparent 11.5px) top left / 22px 12px repeat-x,
+    radial-gradient(circle at 11px 100%, var(--plum) 0 11px, transparent 11.5px) bottom left / 22px 12px repeat-x,
+    radial-gradient(circle at 0 11px, var(--plum) 0 11px, transparent 11.5px) top left / 12px 22px repeat-y,
+    radial-gradient(circle at 100% 11px, var(--plum) 0 11px, transparent 11.5px) top right / 12px 22px repeat-y,
+    var(--ash);
   color: var(--plum);
   box-shadow: 7px 8px 0 rgba(48, 1, 30, .35);
 }
@@ -341,10 +346,10 @@ body.fallback-about-open::before {
 }
 .about-close {
   position: absolute;
-  top: 4px;
-  right: 9px;
+  top: 15px;
+  right: 18px;
   border: 0;
-  background: none;
+  background: var(--ash);
   color: var(--plum);
   font: bold 28px/1 Arial, sans-serif;
   cursor: pointer;
