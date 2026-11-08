@@ -144,8 +144,8 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2px;
-  height: 250px;
-  padding: 8px;
+  height: auto;
+  padding: 8px 8px 2px;
   background: var(--ash);
 }
 
@@ -153,7 +153,7 @@ body {
   display: block;
   width: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 250px;
   object-fit: contain;
 }
 
@@ -173,14 +173,15 @@ body {
 .zine-description { margin: 8px 0; font-size: 13px; line-height: 1.4; }
 .zine-description:empty { display: none; }
 
-.zine-controls {
+.zine-nav, .zine-controls {
   display: grid;
   grid-template-columns: repeat(2, 48px);
   justify-content: center;
   justify-items: center;
   gap: 5px 10px;
 }
-.zine-controls button {
+.zine-nav { margin-top: 0; }
+.zine-nav button, .zine-controls button {
   border: 0;
   padding: 0 6px;
   background: none;
@@ -189,11 +190,12 @@ body {
   text-shadow: 2px 0 0 currentColor, -2px 0 0 currentColor, 0 2px 0 currentColor, 0 -2px 0 currentColor;
   cursor: pointer;
 }
-.zine-controls button:first-child { transform: rotate(-7deg); }
-.zine-controls button:last-child { transform: rotate(6deg); }
-.zine-controls button:hover:not(:disabled) { color: var(--moss); }
-.zine-controls button:disabled { color: var(--blush); cursor: default; }
-.zine-controls button:focus-visible,
+.zine-nav button { font-size: 34px; }
+.zine-nav button:first-child, .zine-controls button:first-child { transform: rotate(-7deg); }
+.zine-nav button:last-child, .zine-controls button:last-child { transform: rotate(6deg); }
+.zine-nav button:hover:not(:disabled), .zine-controls button:hover:not(:disabled) { color: var(--moss); }
+.zine-nav button:disabled, .zine-controls button:disabled { color: var(--blush); cursor: default; }
+.zine-nav button:focus-visible, .zine-controls button:focus-visible,
 .download-sheet:focus-visible { outline: 2px dashed var(--moss); outline-offset: 3px; }
 .download-sheet {
   grid-column: 1 / -1;
