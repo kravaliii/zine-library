@@ -1,5 +1,4 @@
 const dialog = document.querySelector('.zine-dialog');
-const closeDialogButton = dialog.querySelector('.close-dialog');
 let activeReader = null;
 let opener = null;
 
@@ -22,7 +21,8 @@ function renderPages(view, reader) {
     right.alt = '';
   }
 
-  view.querySelector('.page-status').textContent = page === 0
+  const status = view.querySelector('.page-status');
+  if (status) status.textContent = page === 0
     ? `1 / ${total}`
     : facing ? `${page}–${facing} / ${total}` : `${page} / ${total}`;
   view.classList.toggle('has-spread', Boolean(facing));
@@ -50,11 +50,7 @@ function closeReader() {
 function openReader(reader) {
   activeReader = reader;
   opener = reader.zine.querySelector('.zine-pages');
-  dialog.querySelector('#dialog-title').textContent = reader.zine.querySelector('h2').textContent;
-  dialog.querySelector('.zine-description').textContent = reader.zine.querySelector('.zine-description').textContent;
-  const sheet = dialog.querySelector('.download-sheet');
-  sheet.href = reader.zine.querySelector('.download-sheet').href;
-  sheet.setAttribute('aria-label', `Download ${reader.title} zine sheet (opens in a new tab)`);
+  dialog.setAttribute('aria-label', `${reader.title} reader (press Escape or click outside to close)`);
   renderPages(dialog, reader);
   if (typeof dialog.showModal === 'function') {
     dialog.showModal();
@@ -66,7 +62,8 @@ function openReader(reader) {
     document.body.classList.add('fallback-reader-open');
   }
   document.body.classList.add('dialog-open');
-  closeDialogButton.focus();
+  const next = dialog.querySelector('.next-page');
+  (next.disabled ? dialog.querySelector('.prev-page') : next).focus();
 }
 
 document.querySelectorAll('.zine').forEach((zine) => {
@@ -111,7 +108,6 @@ dialog.querySelector('.prev-page').addEventListener('click', () => {
 dialog.querySelector('.next-page').addEventListener('click', () => {
   if (activeReader) turnPage(activeReader, 1);
 });
-closeDialogButton.addEventListener('click', closeReader);
 document.addEventListener('click', (event) => {
   if (document.body.classList.contains('fallback-reader-open') && event.target === document.body) closeReader();
 });
@@ -126,7 +122,8 @@ dialog.addEventListener('keydown', (event) => {
     return;
   }
   if (dialog.classList.contains('fallback-dialog') && event.key === 'Tab') {
-    const focusable = [closeDialogButton, ...dialog.querySelectorAll('.zine-controls button:not(:disabled), .download-sheet')];
+    const focusable = [...dialog.querySelectorAll('.zine-controls button:not(:disabled)')];
+    if (!focusable.length) return;
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }

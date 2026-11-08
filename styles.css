@@ -236,6 +236,7 @@ body.fallback-reader-open::before {
   color: var(--plum);
   box-shadow: 8px 9px 0 rgba(48, 1, 30, .35);
 }
+.zine-dialog:not(.has-spread) { width: min(660px, calc(100vw - 40px)); }
 .zine-dialog[open] { display: flex; flex-direction: column; }
 .zine-dialog.fallback-dialog { position: fixed; inset: 0; z-index: 100; margin: auto; }
 .zine-dialog::backdrop { background: rgba(48, 1, 30, .75); backdrop-filter: blur(3px); }
@@ -247,7 +248,7 @@ body.fallback-reader-open::before {
   flex-direction: column;
   min-width: 0;
   min-height: 0;
-  padding: 28px 36px 18px;
+  padding: 20px 28px 16px;
   background:
     radial-gradient(circle at 11px 0, var(--sage) 0 11px, transparent 11.5px) top left / 22px 12px repeat-x,
     radial-gradient(circle at 11px 100%, var(--sage) 0 11px, transparent 11.5px) bottom left / 22px 12px repeat-x,
@@ -255,29 +256,18 @@ body.fallback-reader-open::before {
     radial-gradient(circle at 100% 11px, var(--sage) 0 11px, transparent 11.5px) top right / 12px 22px repeat-y,
     var(--ash);
 }
-.close-dialog {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  z-index: 1;
-  border: 0;
-  background: var(--ash);
-  color: var(--plum);
-  font: bold 32px/1 Arial, sans-serif;
-  cursor: pointer;
-}
-.close-dialog:focus-visible { outline: 2px dashed var(--moss); outline-offset: 3px; }
 .zine-dialog .zine-pages { flex: 1; min-width: 0; min-height: 0; height: auto; background: transparent; }
 .zine-dialog .zine-pages img { min-width: 0; }
-.zine-dialog .zine-details { min-height: 0; max-height: 120px; margin: 8px 0; overflow-y: auto; }
-.zine-dialog .zine-details h2 { font-size: clamp(22px, 3vw, 32px); }
-.zine-dialog .zine-description { max-width: 650px; margin: 4px auto; font-size: 12px; }
-.zine-dialog .zine-controls { flex: 0 0 auto; }
+.zine-dialog .zine-controls { flex: 0 0 auto; grid-template-columns: repeat(2, 60px); gap: 16px; }
+.zine-dialog .zine-controls button { font-size: 46px; }
 
 @media (max-width: 600px) {
-  .zine-dialog { width: calc(100vw - 18px); height: calc(100dvh - 18px); padding: 8px; }
-  .dialog-inner { padding: 30px 16px 14px; }
-  .close-dialog { top: 8px; right: 12px; }
+  .zine-dialog, .zine-dialog:not(.has-spread) {
+    width: calc(100vw - 36px);
+    height: calc(100dvh - 36px);
+    padding: 8px;
+  }
+  .dialog-inner { padding: 16px 12px; }
 }
 
 /* Pink star cursor and a short glitter trail. */

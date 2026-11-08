@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kravali — Zines</title>
-  <link rel="stylesheet" href="styles.css?v=2">
-  <script src="zine.js?v=2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script src="zine.js?v=3" defer></script>
   <script src="cursor.js?v=2" defer></script>
   <script src="cat.js" defer></script>
   <script src="radio.js" defer></script>
@@ -127,22 +127,15 @@
       </article>
     </section>
 
-    <dialog class="zine-dialog" aria-labelledby="dialog-title">
+    <dialog class="zine-dialog" aria-label="Zine reader (press Escape or click outside to close)">
       <div class="dialog-inner">
-        <button class="close-dialog" type="button" aria-label="Close zine">×</button>
         <div class="zine-pages">
           <img class="page-left" alt="">
           <img class="page-right" alt="" hidden>
         </div>
-        <div class="zine-details">
-          <h2 id="dialog-title"></h2>
-          <p class="zine-description"></p>
-          <span class="page-status" aria-live="polite"></span>
-        </div>
         <div class="zine-controls" aria-label="Zine reader controls">
           <button class="prev-page" type="button" aria-label="Previous pages">←</button>
           <button class="next-page" type="button" aria-label="Next pages">→</button>
-          <a class="download-sheet" target="_blank" rel="noopener">Download</a>
         </div>
       </div>
     </dialog>
