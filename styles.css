@@ -257,7 +257,7 @@ body.fallback-reader-open::before {
   max-height: none;
   padding: 11px;
   border: 0;
-  background: var(--sage);
+  background: var(--plum);
   color: var(--plum);
   box-shadow: 8px 9px 0 rgba(48, 1, 30, .35);
 }
@@ -275,10 +275,10 @@ body.fallback-reader-open::before {
   min-height: 0;
   padding: 20px 28px 16px;
   background:
-    radial-gradient(circle at 11px 0, var(--sage) 0 11px, transparent 11.5px) top left / 22px 12px repeat-x,
-    radial-gradient(circle at 11px 100%, var(--sage) 0 11px, transparent 11.5px) bottom left / 22px 12px repeat-x,
-    radial-gradient(circle at 0 11px, var(--sage) 0 11px, transparent 11.5px) top left / 12px 22px repeat-y,
-    radial-gradient(circle at 100% 11px, var(--sage) 0 11px, transparent 11.5px) top right / 12px 22px repeat-y,
+    radial-gradient(circle at 11px 0, var(--plum) 0 11px, transparent 11.5px) top left / 22px 12px repeat-x,
+    radial-gradient(circle at 11px 100%, var(--plum) 0 11px, transparent 11.5px) bottom left / 22px 12px repeat-x,
+    radial-gradient(circle at 0 11px, var(--plum) 0 11px, transparent 11.5px) top left / 12px 22px repeat-y,
+    radial-gradient(circle at 100% 11px, var(--plum) 0 11px, transparent 11.5px) top right / 12px 22px repeat-y,
     var(--ash);
 }
 .zine-dialog .zine-pages {
