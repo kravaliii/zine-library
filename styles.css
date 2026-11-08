@@ -250,32 +250,30 @@ body.fallback-reader-open::before {
 
 .zine-dialog {
   box-sizing: border-box;
-  width: min(1040px, calc(100vw - 40px));
-  height: min(850px, calc(100dvh - 40px));
+  width: min(990px, calc(100vw - 32px));
+  height: fit-content;
   min-width: 0;
   max-width: calc(100vw - 18px);
-  max-height: none;
+  max-height: calc(100dvh - 32px);
   padding: 11px;
   border: 0;
   background: var(--plum);
   color: var(--plum);
   box-shadow: 8px 9px 0 rgba(48, 1, 30, .35);
 }
-.zine-dialog:not(.has-spread) { width: min(660px, calc(100vw - 40px)); }
-.zine-dialog[open] { display: flex; flex-direction: column; }
+.zine-dialog:not(.has-spread) { width: min(610px, calc(100vw - 32px)); }
+.zine-dialog[open] { display: block; }
 .zine-dialog.fallback-dialog { position: fixed; inset: 0; z-index: 100; margin: auto; }
 .zine-dialog::backdrop { background: rgba(48, 1, 30, .75); backdrop-filter: blur(3px); }
 .dialog-inner {
   position: relative;
   box-sizing: border-box;
   display: flex;
-  flex: 1;
   flex-direction: column;
   justify-content: center;
-  gap: 12px;
   min-width: 0;
   min-height: 0;
-  padding: 20px 28px 16px;
+  padding: 16px 66px;
   background:
     radial-gradient(circle at 11px 0, var(--plum) 0 11px, transparent 11.5px) top left / 22px 12px repeat-x,
     radial-gradient(circle at 11px 100%, var(--plum) 0 11px, transparent 11.5px) bottom left / 22px 12px repeat-x,
@@ -286,7 +284,7 @@ body.fallback-reader-open::before {
 .zine-dialog .zine-pages {
   flex: 0 1 auto;
   align-self: center;
-  width: max-content;
+  width: 100%;
   max-width: 100%;
   min-width: 0;
   min-height: 0;
@@ -297,19 +295,25 @@ body.fallback-reader-open::before {
 .zine-dialog.has-spread .zine-pages { width: 100%; }
 .zine-dialog .zine-pages img { min-width: 0; max-height: min(72dvh, 650px); }
 .zine-dialog .zine-controls {
-  flex: 0 0 auto;
-  grid-template-columns: repeat(2, 60px);
-  gap: 16px;
+  position: absolute;
+  inset: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
 }
-.zine-dialog .zine-controls button { font-size: 40px; }
+.zine-dialog .zine-controls button {
+  width: 52px;
+  height: 48px;
+  padding: 0;
+  font-size: 40px;
+  pointer-events: auto;
+}
 
 @media (max-width: 600px) {
-  .zine-dialog, .zine-dialog:not(.has-spread) {
-    width: calc(100vw - 36px);
-    height: calc(100dvh - 36px);
-    padding: 8px;
-  }
-  .dialog-inner { padding: 16px 12px; }
+  .zine-dialog, .zine-dialog:not(.has-spread) { width: calc(100vw - 24px); padding: 8px; }
+  .dialog-inner { padding: 14px 48px; }
+  .zine-dialog .zine-controls button { width: 40px; height: 44px; font-size: 32px; }
 }
 
 .about-dialog {
