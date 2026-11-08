@@ -301,7 +301,7 @@ body.fallback-reader-open::before {
   grid-template-columns: repeat(2, 60px);
   gap: 16px;
 }
-.zine-dialog .zine-controls button { font-size: 46px; }
+.zine-dialog .zine-controls button { font-size: 40px; }
 
 @media (max-width: 600px) {
   .zine-dialog, .zine-dialog:not(.has-spread) {
