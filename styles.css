@@ -109,7 +109,7 @@ body {
   display: grid;
   place-items: center;
   width: 48px;
-  height: 60px;
+  height: 44px;
   transform: translateY(-50%);
   border: 2px solid var(--plum);
   border-radius: 4px;
@@ -124,7 +124,7 @@ body {
 .page-turn:hover { background: var(--sage); color: var(--ash); }
 .page-turn:focus-visible { outline: 2px dashed var(--plum); outline-offset: 4px; }
 @media (max-width: 600px) {
-  .page-turn { width: 36px; height: 48px; font-size: 24px; }
+  .page-turn { width: 36px; height: 40px; font-size: 24px; }
   .page-turn-next { right: 6px; }
   .page-turn-prev { left: 6px; }
   .about-view { padding: 28px 42px; }
