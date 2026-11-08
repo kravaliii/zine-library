@@ -271,6 +271,8 @@ body.fallback-reader-open::before {
   display: flex;
   flex: 1;
   flex-direction: column;
+  justify-content: center;
+  gap: 12px;
   min-width: 0;
   min-height: 0;
   padding: 20px 28px 16px;
@@ -282,23 +284,24 @@ body.fallback-reader-open::before {
     var(--ash);
 }
 .zine-dialog .zine-pages {
-  flex: 1;
+  flex: 0 1 auto;
+  align-self: center;
+  width: max-content;
+  max-width: 100%;
   min-width: 0;
   min-height: 0;
   height: auto;
-  margin-inline: 62px;
+  padding: 0;
   background: transparent;
 }
-.zine-dialog .zine-pages img { min-width: 0; }
+.zine-dialog.has-spread .zine-pages { width: 100%; }
+.zine-dialog .zine-pages img { min-width: 0; max-height: min(72dvh, 650px); }
 .zine-dialog .zine-controls {
-  position: absolute;
-  inset: 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
+  flex: 0 0 auto;
+  grid-template-columns: repeat(2, 60px);
+  gap: 16px;
 }
-.zine-dialog .zine-controls button { font-size: 46px; pointer-events: auto; }
+.zine-dialog .zine-controls button { font-size: 46px; }
 
 @media (max-width: 600px) {
   .zine-dialog, .zine-dialog:not(.has-spread) {
@@ -307,17 +310,6 @@ body.fallback-reader-open::before {
     padding: 8px;
   }
   .dialog-inner { padding: 16px 12px; }
-  .zine-dialog .zine-pages { margin-inline: 0; }
-  .zine-dialog.has-spread .dialog-inner { justify-content: center; gap: 14px; }
-  .zine-dialog.has-spread .zine-pages { flex: 0 1 auto; height: min(80vw, 45dvh); }
-  .zine-dialog .zine-controls {
-    position: static;
-    display: grid;
-    grid-template-columns: repeat(2, 60px);
-    justify-content: center;
-    gap: 16px;
-    pointer-events: auto;
-  }
 }
 
 .about-dialog {
