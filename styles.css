@@ -102,6 +102,15 @@ body {
 .library-view { display: flex; flex: 1; flex-direction: column; }
 .about-view { display: grid; flex: 1; place-items: center; padding: 32px 56px; }
 .library-view:focus, .about-view:focus { outline: none; }
+/* Slide both page snapshots together; hash navigation still works without this API. */
+html.swipe-to-about::view-transition-old(root) { animation: .45s ease-in-out both swipe-out-left; }
+html.swipe-to-about::view-transition-new(root) { animation: .45s ease-in-out both swipe-in-right; }
+html.swipe-to-library::view-transition-old(root) { animation: .45s ease-in-out both swipe-out-right; }
+html.swipe-to-library::view-transition-new(root) { animation: .45s ease-in-out both swipe-in-left; }
+@keyframes swipe-out-left { to { transform: translateX(-100%); } }
+@keyframes swipe-in-right { from { transform: translateX(100%); } }
+@keyframes swipe-out-right { to { transform: translateX(100%); } }
+@keyframes swipe-in-left { from { transform: translateX(-100%); } }
 .page-turn {
   position: fixed;
   top: 50%;
@@ -188,7 +197,9 @@ body {
   object-fit: contain;
 }
 
-.zine.has-spread .zine-pages img { max-width: calc(50% - 1px); }
+/* Reserve the same space for a cover or a spread, at every card width. */
+.zine .zine-pages { aspect-ratio: 1242 / 882; }
+.zine .zine-pages img { max-width: calc(50% - 1px); max-height: 100%; }
 
 .zine-details {
   min-height: 60px;
@@ -277,9 +288,10 @@ body.fallback-reader-open::before {
   background: rgba(48, 1, 30, .75);
 }
 
+/* Two portrait pages at up to 72dvh; the extra 114px holds the frame and arrows. */
 .zine-dialog {
   box-sizing: border-box;
-  width: min(990px, calc(100vw - 32px));
+  width: min(990px, calc(100vw - 32px), calc(101.4dvh + 114px));
   height: fit-content;
   min-width: 0;
   max-width: calc(100vw - 18px);
@@ -290,7 +302,10 @@ body.fallback-reader-open::before {
   color: var(--plum);
   box-shadow: 8px 9px 0 rgba(48, 1, 30, .35);
 }
-.zine-dialog:not(.has-spread) { width: min(610px, calc(100vw - 32px)); }
+/* The single-page reader has half the image area of a spread, not extra margins. */
+.zine-dialog:not(.has-spread) {
+  width: min(552px, calc((100vw - 32px) / 2 + 57px), calc(50.7dvh + 114px));
+}
 .zine-dialog[open] { display: block; }
 .zine-dialog.fallback-dialog { position: fixed; inset: 0; z-index: 100; margin: auto; }
 .zine-dialog::backdrop { background: rgba(48, 1, 30, .75); backdrop-filter: blur(3px); }
@@ -302,7 +317,7 @@ body.fallback-reader-open::before {
   justify-content: center;
   min-width: 0;
   min-height: 0;
-  padding: 16px 66px;
+  padding: 16px 46px;
   background:
     radial-gradient(circle at 11px 0, var(--plum) 0 11px, transparent 11.5px) top left / 22px 12px repeat-x,
     radial-gradient(circle at 11px 100%, var(--plum) 0 11px, transparent 11.5px) bottom left / 22px 12px repeat-x,
@@ -325,24 +340,26 @@ body.fallback-reader-open::before {
 .zine-dialog .zine-pages img { min-width: 0; max-height: min(72dvh, 650px); }
 .zine-dialog .zine-controls {
   position: absolute;
-  inset: 0 8px;
+  inset: 0 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   pointer-events: none;
 }
 .zine-dialog .zine-controls button {
-  width: 52px;
+  width: 38px;
   height: 48px;
   padding: 0;
-  font-size: 40px;
+  font-size: 36px;
   pointer-events: auto;
 }
 
 @media (max-width: 600px) {
-  .zine-dialog, .zine-dialog:not(.has-spread) { width: calc(100vw - 24px); padding: 8px; }
-  .dialog-inner { padding: 14px 48px; }
-  .zine-dialog .zine-controls button { width: 40px; height: 44px; font-size: 32px; }
+  .zine-dialog { width: calc(100vw - 24px); padding: 8px; }
+  .zine-dialog:not(.has-spread) { width: calc((100vw - 24px) / 2 + 46px); }
+  .dialog-inner { padding: 14px 38px; }
+  .zine-dialog .zine-controls { inset: 0 2px; }
+  .zine-dialog .zine-controls button { width: 32px; height: 44px; font-size: 30px; }
 }
 
 .about-card {
@@ -360,6 +377,7 @@ body.fallback-reader-open::before {
   box-shadow: 7px 8px 0 rgba(48, 1, 30, .35);
   animation: about-arrive .25s ease-out;
 }
+html.swipe-to-about .about-card, html.swipe-to-library .about-card { animation: none; }
 @keyframes about-arrive { from { opacity: 0; transform: translateX(24px); } }
 .about-content { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: center; gap: 30px; }
 .about-photo {
@@ -380,7 +398,10 @@ body.fallback-reader-open::before {
   .about-copy { text-align: center; }
   .about-copy p { font-size: 15px; }
 }
-@media (prefers-reduced-motion: reduce) { .about-card { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .about-card { animation: none; }
+  html::view-transition-old(root), html::view-transition-new(root) { animation: none !important; }
+}
 
 /* Pink star cursor and a short glitter trail. */
 .has-pink-cursor, .has-pink-cursor button, .has-pink-cursor a,

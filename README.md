@@ -12,7 +12,7 @@ After the first successful deployment, the site should be at **https://kravaliii
 
 ## Publish a new zine from the terminal
 
-Add its images/PDFs and update `index.html` and its folder's `zine.md`, then run in this folder:
+Place its images, PDFs, and `zine.md` in `zines/<slug>/`, then update the matching card in `index.html`. Run in this folder:
 
 ```sh
 git add .

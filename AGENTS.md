@@ -19,7 +19,7 @@ This is a static zine library website by Kravali.
 
 ## Zine files and naming
 
-- Keep each zine in its own folder, named with a short, lowercase, filesystem-safe slug (for example `taiwanzine/`). Use that slug consistently for new PDF filenames.
+- Keep zines under `zines/`, each in its own folder named with a short, lowercase, filesystem-safe slug (for example `zines/taiwanzine/`). Use that slug consistently for new PDF filenames.
 - Each zine has two distinct PDFs:
   - `<slug>.pdf`: the 8-page reading PDF. Its pages are shown in the inline browser on the website.
   - `<slug>-sheet.pdf`: the printable zine sheet. The **zine sheet** download link must point to this file, not the 8-page reading PDF.
