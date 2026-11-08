@@ -1,3 +1,3 @@
 # trashzine
 
-ein trash zine aus dem januar.
+gesammelter müll und die dadurch erlebten erfahrungen im jänner
