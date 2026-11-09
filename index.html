@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>Kravali — Zines</title>
-  <link rel="stylesheet" href="styles.css?v=22">
+  <link rel="stylesheet" href="styles.css?v=23">
   <script src="zine.js?v=5" defer></script>
   <script src="cursor.js?v=3" defer></script>
   <script src="about.js?v=3" defer></script>
   <script src="cat.js" defer></script>
   <script src="radio.js" defer></script>
+  <script src="love.js?v=1" defer></script>
 </head>
 <body>
   <main class="archive">
@@ -168,6 +169,17 @@
         </div>
       </div>
     </dialog>
+
+    <button class="love-button" type="button" aria-pressed="false" aria-label="Leave some love" title="leave some love">
+      <svg class="love-heart" viewBox="0 0 32 30" aria-hidden="true" focusable="false">
+        <clipPath id="love-heart-shape">
+          <path d="M16 27 C7 19 2 14 2 8.5 C2 4.5 5 2 8.7 2 C11.2 2 14 3.6 16 6 C18 3.6 20.8 2 23.3 2 C27 2 30 4.5 30 8.5 C30 14 25 19 16 27 Z" />
+        </clipPath>
+        <rect class="love-fill" x="0" y="30" width="32" height="30" clip-path="url(#love-heart-shape)" />
+        <path class="love-outline" d="M16 27 C7 19 2 14 2 8.5 C2 4.5 5 2 8.7 2 C11.2 2 14 3.6 16 6 C18 3.6 20.8 2 23.3 2 C27 2 30 4.5 30 8.5 C30 14 25 19 16 27 Z" />
+      </svg>
+      <span>leave some love</span>
+    </button>
 
   </main>
 </body>

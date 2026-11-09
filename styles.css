@@ -424,6 +424,61 @@ html.swipe-to-about .about-card, html.swipe-to-library .about-card { animation: 
   html::view-transition-old(root), html::view-transition-new(root) { animation: none !important; }
 }
 
+/* A small local-only love button: no server, just a sweet blink in this browser. */
+.love-button {
+  position: fixed;
+  left: 14px;
+  bottom: 74px;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 2px solid var(--plum);
+  border-radius: 50%;
+  background: var(--ash);
+  box-shadow: 3px 3px 0 var(--sage);
+  color: var(--plum);
+  cursor: pointer;
+}
+.love-button span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.love-heart { width: 27px; height: 25px; overflow: visible; }
+.love-outline {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.love-fill {
+  fill: var(--blush);
+  transform: translateY(0);
+  transition: transform .65s cubic-bezier(.2, .9, .2, 1);
+}
+.love-button:hover { background: var(--blush); color: var(--ash); }
+.love-button:hover .love-fill { fill: var(--plum); }
+.love-button.is-loved .love-fill { transform: translateY(-30px); }
+.love-button.is-blinking { animation: love-blink .75s steps(2, jump-none) 2; }
+.love-button:focus-visible { outline: 2px dashed var(--moss); outline-offset: 4px; }
+@keyframes love-blink {
+  50% { filter: brightness(1.5) drop-shadow(0 0 8px var(--blush)); transform: scale(1.12) rotate(-5deg); }
+}
+@media (max-width: 600px) {
+  .love-button { left: 10px; bottom: 70px; width: 38px; height: 38px; }
+  .love-heart { width: 24px; height: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .love-fill { transition: none; }
+  .love-button.is-blinking { animation: none; }
+}
+
 /* Pink star cursor with lingering glitter. */
 .has-pink-cursor, .has-pink-cursor button, .has-pink-cursor a,
 .has-pink-cursor .zine .zine-pages img { cursor: none !important; }
