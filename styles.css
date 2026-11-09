@@ -437,7 +437,7 @@ html.swipe-to-about .about-card, html.swipe-to-library .about-card { animation: 
   stroke-linejoin: round;
 }
 .love-fill {
-  fill: var(--blush);
+  fill: var(--plum);
   transform: translateY(0);
   transition: transform .65s cubic-bezier(.2, .9, .2, 1);
 }
