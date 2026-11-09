@@ -124,17 +124,30 @@ html.swipe-to-library::view-transition-new(root) { animation: .45s ease-in-out b
   background: var(--ash);
   box-shadow: 3px 3px 0 var(--sage);
   color: var(--plum);
-  font: 32px/1 Arial, sans-serif;
+  font-size: 0;
   text-decoration: none;
 }
+.page-turn::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+}
 .page-turn-next { right: 14px; }
+.page-turn-next::before { border-left: 19px solid currentColor; }
 .page-turn-prev { left: 14px; }
+.page-turn-prev::before { border-right: 19px solid currentColor; }
 .page-turn:hover { background: var(--sage); color: var(--ash); }
 .page-turn:focus-visible { outline: 2px dashed var(--plum); outline-offset: 4px; }
 @media (max-width: 600px) {
-  .page-turn { width: 36px; height: 40px; font-size: 24px; }
+  .page-turn { width: 36px; height: 40px; }
+  .page-turn::before { border-top-width: 10px; border-bottom-width: 10px; }
   .page-turn-next { right: 6px; }
+  .page-turn-next::before { border-left-width: 15px; }
   .page-turn-prev { left: 6px; }
+  .page-turn-prev::before { border-right-width: 15px; }
   .about-view { padding: 28px 42px; }
 }
 
@@ -223,15 +236,24 @@ html.swipe-to-library::view-transition-new(root) { animation: .45s ease-in-out b
 }
 .zine-nav { margin-top: 0; }
 .zine-nav button, .zine-controls button {
+  position: relative;
   border: 0;
-  padding: 0 6px;
+  padding: 0;
   background: none;
   color: var(--sage);
-  font: 900 38px/1 Arial, Helvetica, sans-serif;
-  text-shadow: 2px 0 0 currentColor, -2px 0 0 currentColor, 0 2px 0 currentColor, 0 -2px 0 currentColor;
+  font-size: 0;
   cursor: pointer;
 }
-.zine-nav button { font-size: 34px; }
+.zine-nav button::before, .zine-controls button::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: solid currentColor;
+  border-width: 0 5px 5px 0;
+}
+.prev-page::before { transform: rotate(135deg); }
+.next-page::before { transform: rotate(-45deg); }
 .zine-nav button:first-child, .zine-controls button:first-child { transform: rotate(-7deg); }
 .zine-nav button:last-child, .zine-controls button:last-child { transform: rotate(6deg); }
 .zine-nav button:hover:not(:disabled), .zine-controls button:hover:not(:disabled) { color: var(--moss); }
@@ -349,8 +371,6 @@ body.fallback-reader-open::before {
   width: 32px;
   height: 48px;
   padding: 0;
-  font-size: 30px;
-  text-shadow: 1px 0 0 currentColor, -1px 0 0 currentColor, 0 1px 0 currentColor, 0 -1px 0 currentColor;
   pointer-events: auto;
 }
 
@@ -359,7 +379,8 @@ body.fallback-reader-open::before {
   .zine-dialog:not(.has-spread) { width: calc((100vw - 24px) / 2 + 46px); }
   .dialog-inner { padding: 14px 38px; }
   .zine-dialog .zine-controls { inset: 0 11px; }
-  .zine-dialog .zine-controls button { width: 32px; height: 44px; font-size: 22px; }
+  .zine-dialog .zine-controls button { width: 32px; height: 44px; }
+  .zine-dialog .zine-controls button::before { width: 14px; height: 14px; border-width: 0 4px 4px 0; }
 }
 
 .about-card {
